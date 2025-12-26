@@ -1,0 +1,29 @@
+# Core dependencies
+aiohttp>=3.9.5
+edge-tts>=6.1.12
+requests>=2.32.3
+tqdm>=4.66.4
+python-dotenv>=1.0.0
+
+# AI/ML APIs
+google-generativeai>=0.8.5
+groq>=0.11.0
+openai>=1.31.1
+
+# Audio processing
+openai-whisper>=20231117
+whisper-timestamped>=1.15.4
+
+# Video processing (Python 3.13 compatible)
+moviepy>=1.0.3
+imageio>=2.34.1
+imageio-ffmpeg>=0.5.1
+pillow>=10.3.0
+
+# Scientific computing (Python 3.13 compatible versions)
+numpy>=1.26.4
+scipy>=1.13.1
+
+# Utilities
+pydantic>=2.7.3
+tiktoken>=0.7.0

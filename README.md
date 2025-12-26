@@ -1,68 +1,198 @@
-# Text To Video AI 🔥
+# AI Short Video Generator 🎬
 
-Generate video from text using AI
+Generate engaging short-form videos automatically from text prompts using AI! Perfect for YouTube Shorts, TikTok, Instagram Reels, and social media content.
 
-If you wish to add Text to Video into your application, here is an api to create video from text :- https://docs.vadoo.tv/docs/guide/create-an-ai-video
+## ✨ Features
 
-### Youtube Tutorial -> https://www.youtube.com/watch?v=AXo6VfRUgic
+- 🤖 **AI Script Generation** - Powered by Gemini 2.0 Flash, Groq, or OpenAI
+- 🎤 **Text-to-Speech** - Google TTS (gTTS) with Edge-TTS fallback
+- 📝 **Auto Captions** - Whisper-powered timed captions
+- 🎥 **Smart Video Selection** - Pexels API integration for relevant background footage
+- 🎨 **Professional Rendering** - MoviePy 2.x for high-quality output
+- ⚡ **Python 3.13 Compatible** - Latest Python version supported
 
-### Medium tutorial -> https://medium.com/@anilmatcha/text-to-video-ai-how-to-create-videos-for-free-a-complete-guide-a25c91de50b8
+## 🎯 Perfect For
 
-### Demo Video
+- YouTube Shorts creators
+- Social media marketers
+- Content creators
+- Product demos (like DevTree!)
+- Educational content
+- Fact-based viral videos
 
-https://github.com/user-attachments/assets/1e440ace-8560-4e12-850e-c532740711e7
+## 🚀 Quick Start
 
-### 🌟 Show Support
+### 1. Clone the Repository
 
-If you enjoy using Text to Video AI, we'd appreciate your support with a star ⭐ on our repository. Your encouragement is invaluable and inspires us to continually improve and expand Text to Video AI. Thank you, and happy content creation! 🎉
-
-[![GitHub star chart](https://img.shields.io/github/stars/SamurAIGPT/Text-To-Video-AI?style=social)](https://github.com/SamurAIGPT/Text-To-Video-AI/stargazers)
-
-### Steps to run
-
-Run the following steps
-
-```
-export OPENAI_KEY="api-key"
-export PEXELS_KEY="pexels-key"
-
-pip install -r requirements.text
-
-python app.py "Topic name"
+```bash
+git clone https://github.com/modamaan/ai_shortvideo_generator.git
+cd ai_shortvideo_generator
 ```
 
-Output will be generated in rendered_video.mp4
+### 2. Install Dependencies
 
-### Quick Start
+```bash
+pip install -r requirements.txt
+```
 
-Without going through the installation hastle here is a simple way to generate videos from text
+### 3. Set Up API Keys
 
-For a simple way to run the code, checkout the [colab link](/Text_to_Video_example.ipynb)
+Copy `.env.example` to `.env` and add your API keys:
 
-To generate a video, just click on all the cells one by one. Setup your api keys for openai and pexels
+```bash
+cp .env.example .env
+```
 
-## 💁 Contribution
+**Required:**
 
-As an open-source project we are extremely open to contributions. To get started raise an issue in Github or create a pull request
+- **Pexels API** - Get free key at [pexels.com/api](https://www.pexels.com/api/)
 
-### Other useful Video AI Projects
+**Choose ONE AI Provider:**
 
-[AI Influencer generator](https://github.com/SamurAIGPT/AI-Influencer-Generator)
+- **Gemini** (Recommended) - Free at [aistudio.google.com](https://aistudio.google.com/)
+- **Groq** (Fast & Free) - Get key at [console.groq.com](https://console.groq.com/)
+- **OpenAI** (Paid) - Get key at [platform.openai.com](https://platform.openai.com/)
 
-[AI Youtube Shorts generator](https://github.com/SamurAIGPT/AI-Youtube-Shorts-Generator/)
+### 4. Generate Your First Video
 
-[Faceless Video Generator](https://github.com/SamurAIGPT/Faceless-Video-Generator)
+```bash
+python app.py "Amazing ocean facts"
+```
 
-[AI B-roll generator](https://github.com/Anil-matcha/AI-B-roll)
+Output: `rendered_video.mp4` (1920x1080, ~30-40 seconds)
 
-[AI video generator](https://www.vadoo.tv/ai-video-generator)
+## 📖 Usage Examples
 
-[Text to Video AI](https://www.vadoo.tv/text-to-video-ai)
+```bash
+# Facts-based content
+python app.py "Mind-blowing space discoveries"
 
-[Autoshorts AI](https://www.vadoo.tv/autoshorts-ai)
+# Product marketing
+python app.py "DevTree: The developer's link-in-bio tool with GitHub integration"
 
-[Pixverse alternative](https://www.vadoo.tv/pixverse-ai)
+# Educational content
+python app.py "How photosynthesis works in simple terms"
 
-[Hailuo AI alternative](https://www.vadoo.tv/hailuo-ai)
+# Viral content
+python app.py "Weird facts you didn't know about the ocean"
+```
 
-[Minimax AI alternative](https://www.vadoo.tv/minimax-ai)
+## 🛠️ How It Works
+
+```
+1. User Input → "Amazing ocean facts"
+         ↓
+2. AI (Gemini/Groq) → Generate engaging script
+         ↓
+3. gTTS → Convert script to audio
+         ↓
+4. Whisper → Generate timed captions
+         ↓
+5. AI → Extract visual keywords
+         ↓
+6. Pexels API → Fetch background videos
+         ↓
+7. MoviePy → Render final video
+         ↓
+8. Output → rendered_video.mp4
+```
+
+## 🔧 Configuration
+
+### AI Provider Priority
+
+The system automatically uses the first available API:
+
+1. Gemini 2.0 Flash (if `GEMINI_API_KEY` set)
+2. Groq (if `GROQ_API_KEY` set)
+3. OpenAI (if `OPENAI_KEY` set)
+
+### Audio Generation
+
+- Primary: Edge-TTS (Microsoft)
+- Fallback: gTTS (Google) - more reliable
+
+## 📊 API Limits (Free Tier)
+
+| Service              | Limit              | Cost |
+| -------------------- | ------------------ | ---- |
+| **Gemini 2.0 Flash** | 1,500 requests/day | FREE |
+| **Groq**             | Varies by load     | FREE |
+| **Pexels**           | 200 requests/hour  | FREE |
+| **gTTS**             | Unlimited          | FREE |
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**"No module named 'moviepy'"**
+
+```bash
+pip install -r requirements.txt
+```
+
+**"API key not found"**
+
+- Check `.env` file exists
+- Verify API keys are correct
+- No quotes around values in `.env`
+
+**"No audio received" (Edge-TTS)**
+
+- gTTS fallback will activate automatically
+- No action needed
+
+**Video rendering fails**
+
+- Check internet connection (downloads Pexels videos)
+- Ensure sufficient disk space
+- Verify FFmpeg is installed (comes with MoviePy)
+
+## 📚 Documentation
+
+- [`QUICKSTART.md`](QUICKSTART.md) - Quick setup guide
+- [`GEMINI_SETUP.md`](GEMINI_SETUP.md) - Detailed Gemini integration
+- [`PYTHON313_FIX.md`](PYTHON313_FIX.md) - Python 3.13 compatibility notes
+
+## 🧪 Testing
+
+```bash
+# Test API connections
+python verify_apis.py
+
+# Test audio generation
+python test_audio_gen.py
+
+# Test all dependencies
+python test_dependencies.py
+```
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Original project: [SamurAIGPT/Text-To-Video-AI](https://github.com/SamurAIGPT/Text-To-Video-AI)
+- Enhanced with Gemini 2.0 Flash integration
+- Python 3.13 compatibility updates
+- gTTS fallback implementation
+- MoviePy 2.x migration
+
+## 📧 Support
+
+For issues and questions:
+
+- Open an issue on GitHub
+- Check existing documentation
+- Review troubleshooting guide
+
+---
+
+**Made with ❤️ for content creators**
+
+Generate your first AI video in under 5 minutes! 🚀
